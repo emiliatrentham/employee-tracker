@@ -2,7 +2,7 @@
   "name": "employee-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,15 +11,15 @@
     "url": "git+https://github.com/emiliatrentham/employee-tracker.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Emilia Trentham",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/emiliatrentham/employee-tracker/issues"
   },
   "homepage": "https://github.com/emiliatrentham/employee-tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
-    "inquirer": "^9.1.4",
+    "inquirer": "^8.2.4",
     "mysql2": "^2.3.3"
   }
 }
