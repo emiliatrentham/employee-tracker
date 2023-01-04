@@ -150,7 +150,6 @@ const addDepartment = () => {
             }
         }
     }]).then((answers) => {
-        console.log(answers);
         db.query(`INSERT INTO department (name) VALUES (?)`, [answers.department], (err, result) => {
             if (err) throw err;
             console.log(`New "${answers.department}" department added to the database.`)
