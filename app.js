@@ -73,7 +73,9 @@ function init() {
 
 // VIEW FUNCTIONS
 const viewDepartments = () => {
-    var query = `SELECT * FROM department`
+    var query = `SELECT department.name AS department_name,
+                        department.id AS department_id
+                 FROM department`
      
     db.query(query, (err, result) => {
         if (err) throw err;
@@ -83,7 +85,12 @@ const viewDepartments = () => {
 }
 
  const viewRoles = () => {
-    var query = `SELECT * FROM role`
+     var query = `SELECT role.title AS job_title,
+                         role.id AS role_id,
+                         department.name AS department,
+                         role.salary
+                  FROM role       
+                  LEFT JOIN department ON role.department_id = department.id`
      
      db.query(query, (err, result) => {
         if (err) throw err;
@@ -93,7 +100,17 @@ const viewDepartments = () => {
  }
 
  const viewEmployees = () => {
-    var query = `SELECT * FROM employee`
+     var query = `SELECT employee.id,
+                         employee.first_name,
+                         employee.last_name,
+                         role.title,
+                         department.name AS department,
+                         role.salary,
+                         CONCAT (manager.first_name, " ", manager.last_name) AS manager     
+                    FROM employee
+                    LEFT JOIN role ON employee.role_id = role.id 
+                    LEFT JOIN department ON role.department_id = department.id
+                    LEFT JOIN employee manager ON employee.manager_id = manager.id`
      
      db.query(query, (err, result) => {
         if (err) throw err;
