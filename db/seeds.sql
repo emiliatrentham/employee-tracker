@@ -16,5 +16,3 @@ VALUES (1, "Emilia", "Trentham", 1, NULL),
        (2, "Olivia", "Knots", 3, 1),
        (3, "Leila", "Willson", 2, 1),
        (4, "George", "Harrison", 4, 1);
-
-
