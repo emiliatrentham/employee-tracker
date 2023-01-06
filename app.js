@@ -308,7 +308,7 @@ const addEmployee = () => {
 
 // UPDATE FUNCTION
 const updateEmployeeRole = () => {
-    var query = `SELECT * FROM employee, role`
+    var query = `SELECT * FROM role`
     db.query(query, (err, result) => {
         if (err) throw err; 0
 
