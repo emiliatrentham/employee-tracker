@@ -304,8 +304,6 @@ const addEmployee = () => {
     });
 }
 
-
-
 // UPDATE FUNCTION
 const updateEmployeeRole = () => {
     var query = `SELECT * FROM role`
@@ -327,7 +325,7 @@ const updateEmployeeRole = () => {
                     choices: () => employees.map(role => {
                         return {
                             name: `${role.first_name} ${role.last_name}`,
-                            value: `${role.first_name} ${role.last_name}`
+                            value: `${role.id}`
                         }
                     })
                 },
@@ -342,22 +340,11 @@ const updateEmployeeRole = () => {
                         }
                     })
                 }
+
             ]).then((answers) => {
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].last_name === answers.employee) {
-                        var name = result[i];
-                    }
-                }
-
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].title === answers.role) {
-                        var role = result[i];
-                    }
-                }
-
-                db.query(`UPDATE employee SET role_id = ? WHERE id = ?`, [name, role], (err, result) => {
+                db.query(`UPDATE employee SET role_id = ? WHERE employee.id = ? `, [answers.role, answers.employee], (err, result) => {
                     if (err) throw err;
-                    console.log(`Updated ${answers.employee}'s role to the database.`)
+                    console.log(`Employee role updated`)
                     init();
                 });
             })
